@@ -283,19 +283,19 @@ class Render {
 				.cls-1 {
 				fill: orange;
 				}
-		
+
 				.cls-1, .cls-3 {
 				stroke: #6c7679;
 				}
-		
+
 				.cls-2 {
 				clip-path: url(#clip-path);
 				}
-		
+
 				.cls-3, .cls-5 {
 				fill: none;
 				}
-		
+
 				.cls-4 {
 				stroke: none;
 				}
@@ -722,6 +722,7 @@ $(document).ready(function () {
     const defaultLabelList = {
       WITHDRAW: languageText.withdraw,
       DEPOSIT: languageText.deposit,
+      TRANSFER: languageText.transfer,
       TRANSFER_RECEIVE: languageText.transferReceive
     }
 

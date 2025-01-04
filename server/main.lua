@@ -139,7 +139,7 @@ function logTransaction(targetSource,label, key,amount)
         print("ERROR: Do you need use these: WITHDRAW,DEPOSIT,TRANSFER_RECEIVE")
         return
     end
-    
+
     if type(key) ~= "string" or key == '' then
         print("ERROR: Do you need use these: WITHDRAW,DEPOSIT,TRANSFER_RECEIVE and can only be string type!")
         return
@@ -158,9 +158,9 @@ function logTransaction(targetSource,label, key,amount)
 
     if xPlayer ~= nil then
         local bankCurrentMoney = xPlayer.getAccount('bank').money
-        BANK.LogTransaction(targetSource, label, string.upper(key), amount, bankCurrentMoney)  
+        BANK.LogTransaction(targetSource, label, string.upper(key), amount, bankCurrentMoney)
     else
-        print("ERROR: xPlayer is nil!") 
+        print("ERROR: xPlayer is nil!")
     end
 end
 exports("logTransaction", logTransaction)
@@ -207,7 +207,7 @@ BANK = {
         xPlayer.removeAccountMoney('bank', amount)
         xTarget.addAccountMoney('bank', amount)
         local bankMoney = xTarget.getAccount('bank').money
-        BANK.LogTransaction(xTarget.source, "TRANSFER_RECEIVE", amount, bankMoney)
+        BANK.LogTransaction(xTarget.source, "TRANSFER_RECEIVE", "TRANSFER_RECEIVE", amount, bankMoney)
         TriggerClientEvent("esx:showNotification", xTarget.source, TranslateCap('receive_transfer', amount, xPlayer.source),
             "success")
 
@@ -227,8 +227,8 @@ BANK = {
 
         local xPlayer = ESX.GetPlayerFromId(playerId)
         local identifier = xPlayer.getIdentifier()
-    
+
         MySQL.insert('INSERT INTO banking (identifier, label, type, amount, time, balance) VALUES (?, ?, ?, ?, ?, ?)',
             {identifier,label,logType,amount, os.time() * 1000, bankMoney})
-    end   
+    end
 }
